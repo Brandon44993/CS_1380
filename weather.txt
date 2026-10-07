@@ -96,10 +96,22 @@ Build command:
 gcc -Wall -Wextra -Wpedantic -std=c23 -o station main.c station.c
 
 Git status output:
-Paste the actual output of git status here.
+On branch main
+nothing to commit, working tree clean
 
 Git log output:
-Paste the actual output of git log --oneline here.
+fb4aac3 Document dynamic memory allocation learning
+3993986 Add weather station allocation helpers
+
+Program output
+log n=5: 68 71 64 72 70
+reading_at 2 = 64
+reading_at 4 = 70
+max = 72
+calloc zeros: 0 0 0 0 0
+invalid reading = 0
+after free_log, pointer is NULL
+zero-filled log freed; pointer is NULLe.
 
 LEARNING REFLECTION
 
