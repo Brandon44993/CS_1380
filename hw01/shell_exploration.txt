@@ -1,0 +1,49 @@
+2.1
+-l : Long listing format showing permissions, owner, size, and modification date.
+-a : Lists all files, including hidden files starting with a dot (.).
+-F : Appends a visual character indicator to show file type (e.g., / for directories, * for executables).
+
+2.2 
+I discovered that Linux has several important system directories, and each one has a specific purpose. 
+For example, /home contains users' personal files, /etc contains system configuration files, 
+/bin contains essential commands, and /var contains files that change frequently, such as logs. 
+The root directory / is the starting point of the entire Linux file system.
+
+2.3
+I practiced basic file operations such as creating files and directories, copying files with cp, 
+moving or renaming files with mv, and deleting files with rm. These commands are useful for managing files from the Linux terminal.
+
+2.4
+One command I would like to learn more about is find because it can search through directories 
+and locate files based on names, types, sizes, and other properties.
+
+3.1
+The #!/bin/sh line tells the operating system which program should interpret the file. In this case, 
+it tells the system to use the sh shell to run the commands in the file.
+
+3.2
+sh semester tells the sh program to open and interpret the semester file. The file itself does not need to have execute permission.
+./semester tells the operating system to execute the semester file directly. Therefore, the file must have execute permission, which is why i used:
+chmod +x semester
+The #!/bin/sh line tells the system to use sh when ./semester is executed.
+
+3.3
+Linux file permissions determine who can read, write, or execute a file.
+
+3.4
+curl is a program used to make requests to websites and transfer data.
+
+Core Display Options
+-l : Long listing format showing permissions, owner, size, and modification date.
+-a : Lists all files, including hidden files starting with a dot (.).
+-A : Almost all; shows hidden files but excludes the implied . and .. directories.
+-h : Human-readable format; prints sizes in KB, MB, or GB (used alongside -l).
+-1 : Forces the output to display exactly one file per line.
+-d : Lists the directory itself instead of its contents.
+-t : Sorts entries by last modification time, showing the newest files first.
+-S : Sorts entries by file size, showing the largest files first.
+-X : Sorts entries alphabetically by their file extension.
+-r : Reverses the sorting order (e.g., -tr sorts by oldest modification time).
+-R : Lists all subdirectories recursively down the directory tree.
+-i : Displays the unique inode index number for each file.
+-F : Appends a visual character indicator to show file type (e.g., / for directories, * for executables).

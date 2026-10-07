@@ -1,0 +1,128 @@
+CS 1380 Homework 17: Dynamic Memory Allocation
+Name: Brandon Allen 
+Week: 9
+
+PART A — BASIC QUESTIONS
+
+1. Why use malloc for the log instead of int log[100] when the
+shift might record 8 readings or 800?
+
+malloc lets the program request an amount of memory based on a
+value known at runtime. A fixed array such as int log[100] has
+a fixed capacity of 100 readings. A heap allocation can request
+space for the actual number of readings needed, such as 8 or
+800. The caller must check the allocation result and eventually
+free the memory.
+
+2. What does malloc return on failure? Why must you check before
+writing through the pointer?
+
+malloc returns NULL if the allocation fails. I must check the
+pointer before writing through it because dereferencing NULL
+causes undefined behavior and can crash the program.
+
+3. After make_log returns, who owns that memory, and when does
+it go away if you never call free?
+
+The caller receives the pointer and is responsible for managing
+the allocated memory. The allocation remains reserved until it
+is freed or the process terminates. If I lose the only pointer
+without freeing the memory, the block becomes a memory leak
+because I can no longer access it to free it normally.
+
+PART B — BASIC QUESTIONS
+
+1. How does calloc(n, sizeof(int)) differ from
+malloc(n * sizeof(int)) in what you can assume about the bytes?
+
+malloc allocates memory without initializing its contents.
+I must write values before reading them. calloc allocates space
+for n elements of the requested size and initializes all bytes
+to zero. For an int array, the elements therefore start at 0.
+
+2. Why does free_log take int ** instead of int *?
+
+It takes int ** so it can modify the caller's pointer. The
+function frees the allocated block and assigns NULL to the
+caller's pointer. If it took only int *, it would receive a
+copy of the pointer and could not set the caller's pointer
+to NULL.
+
+3. If you malloc inside a function and return without free and
+without handing the pointer back to the caller, what happened
+to that block?
+
+The allocated block remains allocated, but the program has
+lost its only pointer to it. This is a memory leak. The caller
+cannot free the block because it never received the pointer.
+
+HAND TRACE
+
+Code:
+int *p = make_log(3);
+p[0] = 68;
+p[1] = 71;
+p[2] = 64;
+free_log(&p);
+
+Before free_log:
+- p stores the address of the first int in the heap allocation.
+- *p means the first element, whose value is 68.
+- p[1] is 71 and p[2] is 64.
+
+During free_log:
+- free(*log) releases the allocated block.
+- *log = NULL assigns NULL to the caller's pointer p.
+
+After free_log:
+- p stores NULL.
+- p no longer points to the allocated block.
+- Evaluating *p would dereference NULL and is invalid.
+- The old allocation must not be accessed after it has been freed.
+
+PART C — GIT
+
+Repository branch: main
+
+Required files:
+- main.c
+- station.c
+- station.h
+- weather.txt
+- ai_usage_log.txt
+- .gitignore
+
+Build command:
+gcc -Wall -Wextra -Wpedantic -std=c23 -o station main.c station.c
+
+Git status output:
+On branch main
+nothing to commit, working tree clean
+
+Git log output:
+fb4aac3 Document dynamic memory allocation learning
+3993986 Add weather station allocation helpers
+
+Program output
+log n=5: 68 71 64 72 70
+reading_at 2 = 64
+reading_at 4 = 70
+max = 72
+calloc zeros: 0 0 0 0 0
+invalid reading = 0
+after free_log, pointer is NULL
+zero-filled log freed; pointer is NULLe.
+
+LEARNING REFLECTION
+
+I learned that stack arrays and heap allocations have different
+lifetimes and allocation sizes. malloc provides uninitialized
+memory, while calloc initializes the allocated bytes to zero.
+I learned to check allocation results before using pointers,
+free heap memory when it is no longer needed, and set a caller's
+pointer to NULL using a pointer-to-pointer parameter.
+
+The weather station's reading count is determined at runtime,
+so a dynamically allocated array is appropriate. I also learned
+that losing the only pointer to an allocated block without
+freeing it causes a memory leak.

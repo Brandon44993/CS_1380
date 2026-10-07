@@ -1,0 +1,119 @@
+CS 1380 Homework 10
+File Input/Output Operations
+
+PART A - BASIC QUESTIONS
+
+1. Why is a while loop that stops at EOF a better fit here?
+
+A while loop that stops at EOF is a better fit because the program does not know the number of customers before opening the file. The loop can keep reading customers until fgets reaches the end of the file. This avoids needing to ask the user for a customer count and allows the file to contain any number of customers.
+
+2. Why do we count customers from lines read instead of asking for n first?
+
+We count customers as they are successfully read and parsed because the number of customers is determined by the contents of the file. If the file had 12 customers and the old 1-10 limit were still used, the program would stop after 10 customers and incorrectly leave two customers unprocessed.
+
+3. Why use fgets + sscanf instead of a bare fscanf loop?
+
+fgets and sscanf let the program process one complete line at a time. This is useful because the specification says that each line represents one customer. If a line is malformed, the program can skip that entire line and continue with the next line instead of having the input parsing become misaligned.
+
+4. What happened when ticket_customers.txt was missing or renamed?
+
+I tested this by temporarily renaming or removing ticket_customers.txt and running the program. fopen failed, so the program printed an error message to stderr that included the reason for the failure and returned a non-zero status. The program did not continue as if the file had been successfully opened.
+
+5. Why is continue more appropriate than break for a malformed data line?
+
+continue skips the bad line and moves on to the next line. This is appropriate because the assignment says that a bad line in an otherwise good file should be ignored while the rest of the batch continues. break would stop the entire batch at the first bad line.
+
+PART B - BASIC QUESTION
+
+Why write the summary to ticket_report.txt in addition to printing it?
+
+Writing the summary to a file creates a permanent record that can be reviewed later or submitted as part of the assignment. Console output is still useful because it gives immediate feedback while the program is running and makes it easier to see whether the program worked without opening another file.
+
+PART C - JOB CONTROL
+
+Job control commands and output:
+
+I ran:
+
+sleep 60
+
+Then I pressed Ctrl-Z to suspend the job.
+
+I ran:
+
+jobs
+
+[PASTE MY ACTUAL OUTPUT HERE]
+
+I then ran:
+
+bg %1
+
+Then:
+
+jobs
+
+[PASTE MY ACTUAL OUTPUT HERE]
+
+I then ran:
+
+kill %1
+
+Then:
+
+jobs
+
+[PASTE MY ACTUAL OUTPUT HERE]
+
+I also tested a job that starts in the background:
+
+sleep 20 &
+
+jobs
+
+[PASTE MY ACTUAL OUTPUT HERE]
+
+fg
+
+[PASTE ANY ACTUAL OUTPUT HERE]
+
+SSH KEY GENERATION
+
+I listed my SSH directory with:
+
+ls -la ~/.ssh
+
+[PASTE MY ACTUAL OUTPUT HERE]
+
+If an id_ed25519 key already existed, I did not overwrite it.
+
+If I needed to create a key, I used:
+
+ssh-keygen -t ed25519 -C "MY_SCHOOL_EMAIL@uvu.edu"
+
+I then displayed only the public key with:
+
+cat ~/.ssh/id_ed25519.pub
+
+Public key:
+[PASTE MY PUBLIC KEY HERE]
+
+I did not include or share my private id_ed25519 file.
+
+PART C - BASIC QUESTIONS
+
+1. What is the difference between Ctrl-C and Ctrl-Z?
+
+Ctrl-C sends an interrupt signal to the foreground process and normally stops it. Ctrl-Z suspends the foreground process so it can later be continued with bg or fg.
+
+2. After a suspend, what do bg and fg do?
+
+bg continues the suspended job in the background, allowing the shell to accept other commands. fg brings the job back to the foreground.
+
+3. Why is the private SSH key a secret but the .pub file is safe to share?
+
+The private key is used to prove my identity and must be protected like a password. The public key is designed to be shared and can be placed on a server or service so that the service can verify signatures made with the private key. Someone should never receive my private key.
+
+PART D - OBSERVATIONS
+
+The file-based version is different from Homework 8 because it does not ask for the number of customers and does not have a 10-customer limit. The program reads until EOF, validates each line, skips invalid lines, counts valid customers, calculates ticket prices, and writes both screen output and a report file.

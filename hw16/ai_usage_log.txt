@@ -1,0 +1,33 @@
+Prompt given to AI:
+
+I provided the CS 1380 Homework 16 assignment requirements and my completed files (main.c, menu.c, menu.h, cafe_menu.txt, .gitignore, and ai_usage_log.txt). I asked ChatGPT how I could improve my assignment before submitting it.
+
+AI response:
+
+ChatGPT reviewed my files and identified several strengths and areas for improvement.
+
+The strengths included:
+
+menu.h contained the required include guard and function prototypes.
+
+menu.c implemented the six required pointer arithmetic functions.
+
+main.c demonstrated menu printing, price lookups, finding the maximum price, displaying addresses, pointer subtraction, reversing the menu, and calculating drink length.
+
+cafe_menu.txt contained answers to the basic questions and the correct hand-trace results.
+
+The recommended improvements were:
+
+Add #include <stdio.h> to menu.c because it uses printf().
+
+
+Ensure the source file is named main.c, compile the program with the required warning flags, test the output, verify the Git commits and push, and create the required ZIP file.
+
+My critique of the AI response:
+
+The feedback was useful because it identified specific improvements instead of just telling me that my assignment looked good. The missing standard I/O header, inconsistent spelling, and incomplete Git evidence were concrete issues I could check. The response also reminded me to verify the program by compiling and running it rather than assuming that the code was correct. I still need to test the program myself, confirm that there are no compiler warnings, and complete the remaining submission requirements.
+
+Changes made or planned after reviewing the response:
+
+Add the missing standard I/O header to menu.c.
+

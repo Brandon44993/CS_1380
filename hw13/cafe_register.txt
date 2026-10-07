@@ -1,0 +1,84 @@
+CS 1380 Homework 13
+Function Parameters and Return Values
+
+Name: Brandon Allen
+
+Part A — Basic Questions
+1. preview_discount and apply_discount
+
+After preview_discount(price, 10), price is unchanged because price is passed by value. The function receives its own copy of the integer, so changing that copy does not change main's variable. For apply_discount to change the caller's price, main must pass the address of the variable with &price. The function receives an int pointer and can update the value using *price_cents.
+
+2. charge
+
+charge returns an error code so the caller can tell whether the operation succeeded or what type of error occurred. The new balance is returned through new_balance because a C function can return one value directly, while the pointer provides another output. This also lets charge report success or failure without printing inside the function.
+
+3. make_change failure
+
+When make_change returns false, main should not use the output value as a valid change amount. It should handle the failure, such as by printing an error message or taking another appropriate action.
+
+Part B — Basic Questions
+1. When is void the right return type?
+
+void is appropriate when a helper does not need to return a value or status to its caller. For example, preview_discount calculates and displays information, while print_line_item simply prints a line, so both can use void.
+
+2. How does price_span communicate three pieces of information?
+
+price_span returns a bool to communicate whether the operation succeeded. If it succeeds, it writes the minimum through min_out and the maximum through max_out. Therefore, the caller receives the success/failure status plus two output values.
+
+3. What is undefined behavior if a non-void function falls off the end?
+
+If a non-void function reaches the end without returning a value, the behavior is undefined when the caller uses the supposed return value. Every execution path of a non-void function should return an appropriate value.
+
+Part C — Git Questions
+1. Why commit the header before a huge unfinished cafe.c?
+
+Committing the header separately creates a small, meaningful checkpoint. It records the interface before the implementation becomes large, making the commit history easier to understand and making it possible to return to a known working point.
+
+2. One file that should stay out of Git
+
+The compiled cafe executable should stay out of Git because it is a generated binary rather than source code. The executable can be recreated by compiling the source files, so it does not need to be stored in the repository.
+
+Git Evidence
+
+I kept the project on the main branch and made separate commits as I worked.
+
+Commands used included:
+
+git status
+
+git add cafe.h
+
+git commit -m "Add cafe header"
+
+git add cafe.c
+
+git commit -m "Implement charge and change"
+
+git add main.c
+
+git commit -m "Add main demo"
+
+git status
+
+git log --oneline
+
+git status after the last commit
+
+## Git Evidence
+
+### git status after the last commit
+
+On branch main
+Untracked files:
+        cafe_register.txt
+
+### git log --oneline
+
+06a7ac1 (HEAD -> main) Add main demo
+dac669b Implement charge and change
+d5127e0 Add cafe header
+What I Learned
+
+This homework helped me see the difference between passing an integer by value and passing a pointer to an integer. Passing price to preview_discount gives the function a copy, while passing &price to apply_discount allows the function to modify the original variable.
+
+I also learned that pointers can be used for output values. Functions such as charge and price_span can return a status while writing additional results into variables supplied by the caller. Checking pointers and input values before dereferencing them is important because it prevents invalid memory access and makes the functions safer to use.

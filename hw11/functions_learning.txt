@@ -1,0 +1,33 @@
+
+
+1. What is a function, and why put the calculator operations in separate functions?
+
+A function is a named section of code that performs a specific task. I separated the calculator operations into different functions because each function has one clear job. This makes the program easier to read, test, and modify instead of putting everything into one large main function.
+
+2. What is the difference between a function prototype and a function definition? Why did you need prototypes?
+
+A function prototype tells the compiler the function's name, return type, and parameter types without providing the function's code. A function definition contains the actual code that the function runs. I needed the prototypes because main calls the functions before their definitions appear later in the file.
+
+3. How does a void function differ from one that returns int or double? Which calculator functions are void?
+
+A void function does not return a value. A function that returns int or double gives a value back to the code that called it. In my calculator, display_menu is a void function because it only displays the menu and does not need to return anything. The other functions return values that are used by main.
+
+4. When main calls add(12, 4), what happens to control flow? What is an argument vs. a parameter?
+
+When main calls add(12, 4), control moves from main to the add function. The function receives the two values, adds them, returns the result, and then control goes back to main. The values 12 and 4 are arguments because they are supplied in the function call. The variables a and b are parameters because they receive those values inside the function.
+
+5. In Part B, which variables were global, local, and block-scoped? What does shadowing mean?
+
+The global variable is global_value because it is declared outside of all functions. The local_value variables inside main and show_scopes are local variables because they belong to their individual functions. The block_value variable is block-scoped because it is declared inside the nested braces and cannot be used outside that block. Shadowing means that a variable in an inner scope has the same name as a variable in an outer scope, causing the inner variable to be used within that scope.
+
+6. Why prefer local variables and parameters over globals for most of your code?
+
+Local variables and parameters limit where data can be accessed and changed. This makes programs easier to understand, test, and debug. Global variables can be changed from many different places, which can make programs harder to maintain.
+
+7. What is the difference between a local repository and a remote (GitHub)? What do git commit and git push each do?
+
+A local repository is the Git repository stored on my computer. A remote repository is a copy of the repository hosted somewhere else, such as GitHub. The git commit command records changes in the local repository. The git push command sends local commits to the remote GitHub repository.
+
+8. Why keep this homework repo private? What evidence did you submit to show the push succeeded?
+
+The homework repository should remain private so other students cannot access and copy the assignment. I submitted the remote URL, commit history, and Git status as evidence. The remote URL shows where the repository is hosted, the commit history shows that the homework was committed, and git status shows the state of my working tree after the push.

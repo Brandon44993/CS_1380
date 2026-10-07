@@ -1,0 +1,23 @@
+Why is C still relevant in modern programming?
+   C is still relevant because it provides direct control over computer hardware, memory, and system resources. 
+   It is fast, efficient, and commonly used to build operating systems, embedded systems, device drivers, 
+   and other software where performance is important.
+
+What are the main advantages of C over other languages?
+   The main advantages of C are its speed, efficiency, portability, and low-level control. 
+   C also has relatively simple syntax and a small set of core features, which makes it useful for developing software 
+   that needs to run efficiently on many different types of hardware.
+
+How does C23 address modern programming challenges?
+   C23 is the newest major C language standard and adds several modern features while keeping C's focus on efficiency and compatibility. 
+   It improves the language with features such as better support for modern types, attributes, improved syntax, and 
+   safer or clearer ways to write certain programs. It helps C remain useful for modern systems without changing its fundamental low-level nature.
+
+What industries and applications heavily rely on C?
+   C is heavily used in operating systems, embedded systems, automotive technology, aerospace, telecommunications, networking, robotics, and electronics. 
+   It is also used for databases, compilers, device drivers, and other performance-critical software.
+
+Why do you think C has remained popular for 50+ years?
+   I think C has remained popular because it provides a good balance between high-level programming and direct hardware control. 
+   It is fast, portable, and relatively simple compared with many other programming languages. Since so much existing software and 
+   infrastructure was built using C, it also continues to be taught and used in modern programming.

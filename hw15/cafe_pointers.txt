@@ -1,0 +1,62 @@
+cafe_pointers.txt
+CS 1380 Homework 15
+Understanding Pointers
+Name: Brandon Allen
+
+Basic Questions
+
+What does a pointer store? How is that different from storing the price itself?
+A pointer stores the memory address of another object. An int variable such as latte stores the actual price value, such as 350. A pointer to latte stores where latte is located in memory, not 350 itself.
+
+After int tag = &latte;, what do tag, tag, and &latte each mean?
+tag stores the address of latte. *tag accesses the value at that address, so it gives the current value of latte. &latte means the address of the latte variable.
+
+Why is it undefined behavior to dereference an uninitialized pointer?
+What should you initialize a pointer to if it does not yet have a target?
+
+An uninitialized pointer does not have a reliable valid address, so dereferencing it can access an invalid memory location and causes undefined behavior. A pointer that does not have a target should be initialized to NULL.
+
+Part B Questions
+
+Why does retarget take int instead of int *?
+retarget needs to change the address stored in the special pointer. An int * would allow changing the integer that special points to, but int allows the function to modify the pointer itself. Passing &special gives the function the address of the pointer.
+
+Why can printprice take const int while set_price cannot?
+printprice only needs to read the price, so const int prevents the function from changing the value through that pointer. set_price needs to modify the price, so it cannot use a pointer-to-const.
+
+In your array demo, why does p + 1 not add one byte?
+Pointer arithmetic is based on the type being pointed to. Since p is an int *, p + 1 advances by the size of one int, so it points to the next array element rather than simply moving one byte.
+
+Part C Questions
+
+Name one file that should stay out of Git for this project, and why.
+The compiled specials executable should stay out of Git because it is a generated binary rather than source code. It is included in the .gitignore file so Git will ignore it.
+
+Why push to the remote in addition to uploading hw15.zip on Canvas?
+Pushing to the remote creates a backup of the source code and preserves the commit history. The Canvas zip is the submission for grading, while the remote repository provides another copy of the project and its development history.
+
+What I Learned
+
+I learned that a pointer stores an address rather than the value at that address. The & operator gets an address, while * follows an address and accesses the value stored there. I also learned that a function can change the caller's variable by receiving its address.
+
+The retarget example helped me understand pointers to pointers. Passing &special lets retarget change which integer special points to without changing the integer values themselves.
+
+I also learned that an array name can be used as the base address for pointer arithmetic. Since p is an int pointer, p + 1 points to the next element in the array.
+
+Git Commands
+
+Commands I used:
+
+git add . git commit -m "Add pointer demo and writeup" git add . git commit -m "Document homework completion" git status git log --oneline
+
+Final git status:
+
+On branch main nothing to commit, working tree clean
+
+Git log:
+
+b3b31cb (HEAD -> main) Document homework completion c16de38 Add pointer demo and writeup
+
+Git Push
+
+I created the required commits on the main branch. The course Git remote still needs to be configured before I can push this repository. :::
