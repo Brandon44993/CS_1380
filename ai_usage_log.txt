@@ -1,0 +1,26 @@
+CS 1380 Homework 17 — AI Usage Log
+
+AI tool used: ChatGPT
+
+Prompts and assistance requested:
+
+I asked for help troubleshooting the compilation and execution of my C dynamic memory allocation program.
+
+I asked how to run the compiled program from the correct Ubuntu directory when the shared folder would not allow execution.
+
+I asked for help initializing a Git repository, creating commits, connecting to GitHub, and pushing my homework.
+
+I asked what program output and Git evidence needed to be included in weather.txt.
+
+Summary of AI responses:
+ChatGPT helped me identify the correct project directory, compile the program with GCC warning flags, and run the executable from my Ubuntu home directory. 
+It guided me through Git initialization, commits, remote configuration, and pushing the main branch to GitHub. It also helped me distinguish program output from Git status and commit history.
+
+My critique of the AI assistance:
+The assistance was useful because it helped me work through terminal errors one step at a time. I learned that a program 
+can compile successfully but still be unable to execute from a shared folder because of file permission restrictions. 
+I also learned how Git commits and remote pushes work. I needed to check the output carefully because I initially confused program output with Git status and Git log evidence.
+
+Changes made after reviewing the assistance:
+I compiled and ran the program, checked its output, initialized the Git repository, made commits, pushed the files to GitHub, and corrected the output evidence in weather.txt. 
+I verified the commands in my own terminal.
