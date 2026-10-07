@@ -1,0 +1,96 @@
+CS 1380 - Homework 18: Growing the Station Log
+Name: Brandon Allen
+Date: October 20, 2026
+
+PART A - BASIC QUESTIONS
+
+1. Why is log = realloc(log, new_bytes); dangerous if realloc returns NULL?
+
+If realloc fails, it returns NULL and leaves the original allocation
+valid. Assigning the result directly to log overwrites the only pointer
+to the original allocation. That causes a memory leak because the
+program can no longer access the original block to free it. I use a
+temporary pointer and only return it when realloc succeeds.
+
+2. After a successful realloc that moves the block, what must you
+assume about the old address?
+
+I must assume the old address is no longer valid for accessing the
+allocation. I must use the pointer returned by realloc and must not
+read through or free the old pointer.
+
+3. Name one difference between a leak, a use-after-free, and a double
+free.
+
+A memory leak happens when allocated memory is no longer reachable
+and cannot be freed by the program. A use-after-free happens when
+the program accesses memory after it has been freed. A double free
+happens when the program frees the same allocation more than once.
+
+PART B - HAND TRACE
+
+Start with a three-element log at address A. grow_log succeeds and
+moves the block to address B.
+
+- After grow_log succeeds, I must use the returned pointer B.
+- I must not read or write through address A because the old
+  allocation has been moved and its old pointer is invalid.
+- I must free the allocation once, using the current pointer B.
+- I must not free both A and B.
+
+PART B - BASIC QUESTIONS
+
+4. After free_log(&log), why is log[0] = 68; undefined behavior
+even if it sometimes works?
+
+free_log frees the allocated memory and sets log to NULL.
+Accessing log[0] afterward dereferences a NULL pointer. More
+generally, accessing memory after its lifetime has ended is
+undefined behavior. The memory might appear to contain the old
+value, but the program cannot rely on it.
+
+5. When is calloc a better first allocation than malloc? When is
+realloc the tool instead of allocating a new array and copying?
+
+calloc is useful when I want the allocated elements initialized
+to zero. malloc allocates memory without initializing its contents.
+
+realloc is useful when I want to resize an existing heap allocation
+while preserving its existing contents up to the smaller of the old
+and new sizes. It can move the block, so I must use its returned
+pointer and handle failure safely.
+
+PART C - GIT
+
+I will work on the main branch and make at least two commits.
+I will inspect git status and git log --oneline, then push my
+commits to the course repository.
+
+Paste the actual output of these commands below after completing
+the Git steps. Do not invent output.
+
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+$ git log --oneline
+8d40b72 Add HW18 station log implementation
+
+Program output
+start n=3: 68 71 64
+after grow n=6: 68 71 64 72 70 67
+max = 72
+after append n=8: 68 71 64 72 70 67 69 65
+max = 72
+NULL log test: NULL maximum = 0
+after free_log, pointer is NULL
+
+PART D - REFLECTION
+
+6. Why commit a working make_log / print_log before adding realloc,
+instead of making one giant commit at the end?
+
+Small commits let me test one part at a time and identify where a
+bug was introduced. A working initial allocation and print function
+provide a stable starting point for implementing and testing growth.
+The commit history also documents how the program developed.

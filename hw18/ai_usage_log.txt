@@ -1,0 +1,13 @@
+HW18 AI Usage Log
+
+Prompt 1: Review my Homework 18 files
+
+Prompt: I shared my Homework 18 assignment instructions and my main.c, station.c, and station.h files 
+and asked ChatGPT to check whether the program met the requirements.
+
+AI response: ChatGPT reviewed the files and reported that the required functions were present. 
+It also identified the need to use the correct filenames, include actual Git command output in weather.txt, and complete the AI usage log.
+
+My critique: This feedback helped me identify which submission requirements were unfinished. 
+I still needed to verify the code by compiling and running it in Ubuntu.
+
