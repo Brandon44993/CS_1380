@@ -1,0 +1,37 @@
+COURSEWORK WORKSPACE OVERVIEW
+
+Purpose:
+This directory is used to organize coursework, assignments, labs, projects, notes, and documentation.
+
+Directory Structure:
+
+notes/
+- Class notes, lecture notes, and study materials.
+
+assignments/
+- Individual homework assignments and completed coursework.
+
+labs/
+- Laboratory exercises, experiments, and lab-related files.
+
+projects/
+- Larger programming projects and multi-file assignments.
+
+docs/
+- Documentation, workspace information, and reference materials.
+
+Naming Convention:
+Files will use clear, descriptive names.
+Lowercase letters and underscores will be used when appropriate.
+Examples:
+- assignment_01.py
+- lab_02.py
+- project_report.txt
+- course_setup.txt
+
+Organization Rules:
+1. Keep files in the directory that best matches their purpose.
+2. Use descriptive filenames.
+3. Avoid unnecessary duplicate files.
+4. Keep documentation in the docs directory.
+5. Keep projects separate from individual assignments and labs.

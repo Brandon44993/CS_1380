@@ -1,0 +1,71 @@
+Function Design
+
+Part A
+
+1. What does "one function, one job" imply?
+
+"One function, one job" implies that each function should perform one task rather than multiple tasks. This makes the functions easier to understand, test, and reuse.
+
+For instance, square has the task of computing the square of an integer, while rectangle_area computes the area of a rectangle and returns zero when either of the sides is negative.
+
+2. Where does what go into measure.h or measure.c?
+
+measure.h holds the interface of the library. It has the include guard, the stdbool.h header file that is needed for the bool type, and the function prototypes.
+
+measure.c has the function implementations and includes measure.h. By separating the interface from the implementation, we ensure that main.c only needs to know what functions are available and not how they are implemented.
+
+The two files are compiled together because main.c uses functions that are defined in measure.c.
+
+3. How does calling rectangle_area from box_volume work?
+
+When box_volume calls rectangle_area, execution is temporarily transferred from box_volume to rectangle_area. The latter calculates the area of the rectangle and returns it. Execution then returns to box_volume, which multiplies the base area by the height.
+
+The arguments at the call site are the actual values passed to the function. In this case, length and width are the arguments. In rectangle_area, length and width are called parameters because they receive those values.
+
+Part B
+
+4. How does calling a void function differ from calling one that returns int or double? Which of your functions are void, and why?
+
+A void function does not return a value to the caller. A function that returns int or double produces a value that can be stored in a variable, printed, or used in an expression.
+
+The print_rectangle function is void because its job is to print the rectangle's area and perimeter. It does not need to give a value back to main.
+
+5. Give one bad function name you almost used and the better name you chose. Why is the better name easier to call correctly from main?
+
+A bad function name would be process because it does not clearly describe what the function does. A better name is rectangle_area because the name clearly tells me that the function calculates the area of a rectangle.
+
+The better name makes the function easier to understand and makes it easier to know what the function should be used for when calling it from main.
+
+6. Why prefer composing clamp from min2/max2 instead of copying the comparison logic a second time?
+
+Composing clamp from min2 and max2 avoids repeating comparison logic. It also allows the smaller functions to be tested and reused separately. If the comparison logic needs to change, using the existing functions makes the code easier to maintain.
+
+Part C
+
+7. What is the difference between the working directory, the staging area, and a commit? What do git add and git commit each do?
+
+The working directory contains the files I am currently editing and changing. The staging area contains the changes that I have selected to include in the next commit. A commit is a saved snapshot of the staged changes in the Git repository.
+
+The git add command puts selected changes into the staging area. The git commit command saves the staged changes as a commit in the repository.
+
+8. Why make several small commits instead of one commit at the end? Why are we not branching or merging on this homework?
+
+Several small commits make it easier to see the progress of the project and identify what changed at each step. They also make it easier to go back to an earlier version if something goes wrong.
+
+We are not branching or merging on this homework because the assignment is focused on practicing the basic Git workflow of editing, staging, committing, checking status, and viewing the commit history.
+
+Git Evidence
+
+git status
+
+On branch main
+nothing to commit, working tree clean
+
+git log --oneline
+
+1f298cc (HEAD -> main) Add function design and Git documentation
+06c7f57 Add main demo that calls measure functions
+66d7720 Implement measure library functions
+319c146 Add measure header and gitignore
+
+The repository was kept on the main branch and four commits were made for this homework.

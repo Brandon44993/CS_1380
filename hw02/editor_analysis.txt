@@ -1,0 +1,21 @@
+What text editor did you choose and why?
+    I chose Nano as my text editor because it is simple to use and works directly in the Linux terminal. It is a good choice for a beginner because I do not need to learn many complicated commands before I can start writing C programs.
+
+How does your chosen tool help with C programming?
+    Nano allows me to create, edit, and save C source files directly from the terminal. I used Nano to create and edit my `c23_intro.c` program. After editing the program, I saved the file and used GCC from the terminal to compile and run it.
+
+What features are most important for a beginner programmer?
+    The most important features for a beginner programmer are simple editing, easy saving, clear navigation, and the ability to work with files from the terminal. Nano provides these features without being overly complicated, which makes it useful while learning programming.
+
+
+What warnings did you get and why?
+    I did not get any warnings when compiling my program with `-Wall` and `-Wextra`. The program was written correctly and did not contain problems that those warning options detected.
+
+How do the executable sizes compare?
+    The executable compiled with `-std=c23` was 15,968 bytes. The executable compiled with `-Wall` and `-Wextra` was also 15,968 bytes. The executable compiled with `-g` was larger at 17,384 bytes. This shows that adding debugging information increased the executable's size.
+
+What's the difference between `-g` and no `-g`?
+    The `-g` option adds debugging information to the executable. This information allows a debugger such as GDB to provide more details about the program while it is running. Without `-g`, the executable does not contain the same debugging information and is smaller.
+
+When would you use each compilation option?
+    I would use `-std=c23` when I want to make sure my program is compiled using the C23 standard. I would use `-Wall` and `-Wextra` when developing a program because they help identify possible problems in my code. I would use `-g` when I need to debug a program with a debugger such as GDB. For a final version where debugging information is not needed, I may compile without `-g`.

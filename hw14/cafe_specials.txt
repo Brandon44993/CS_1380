@@ -1,0 +1,148 @@
+CS 1380 Homework 14: Recursion and Function Pointers
+
+Part A — Basic Questions
+
+What are the base case and recursive case for your factorial?
+
+The base case for factorial is n <= 1, which returns 1. This stops the recursion.
+
+The recursive case is n * factorial(n - 1). Each recursive call decreases n by 1, so the function eventually reaches the base case.
+
+What goes wrong if you omit the base case?
+
+If the base case is omitted, the recursive function will keep calling itself without stopping. This can eventually cause a stack overflow because the program keeps adding function calls to the call stack.
+
+When might a loop be a better fit than recursion for summing an order?
+
+A loop can be a better fit when the problem is simply processing a list of items from beginning to end. A loop avoids the extra function calls and stack usage caused by recursion. For a straightforward order, a loop is often simpler and more efficient.
+
+Part A — Hand Trace
+
+factorial(4)
+
+factorial(4)
+= 4 * factorial(3)
+= 4 * (3 * factorial(2))
+= 4 * (3 * (2 * factorial(1)))
+= 4 * (3 * (2 * 1))
+= 4 * (3 * 2)
+= 4 * 6
+= 24
+
+Calls as they are made:
+
+factorial(4)
+factorial(3)
+factorial(2)
+factorial(1)
+
+Values returned while the stack unwinds:
+
+factorial(1) returns 1
+factorial(2) returns 2
+factorial(3) returns 6
+factorial(4) returns 24
+
+Hand Trace: fib(4)
+
+The function is:
+
+int fib(int n)
+{
+if (n <= 1) {
+return n;
+}
+
+return fib(n - 1) + fib(n - 2);
+
+
+}
+
+The calls are:
+
+fib(4)
+├── fib(3)
+│ ├── fib(2)
+│ │ ├── fib(1) = 1
+│ │ └── fib(0) = 0
+│ │ returns 1
+│ └── fib(1) = 1
+│ returns 2
+└── fib(2)
+├── fib(1) = 1
+└── fib(0) = 0
+returns 1
+
+Therefore:
+
+fib(4) = 2 + 1 = 3
+
+This version repeats work because fib(2) is calculated more than once. As the input gets larger, many of the same Fibonacci values are calculated again.
+
+Part B — Function Pointers
+
+What does a function pointer store?
+
+A function pointer stores the address of a function. It allows the program to call a function through the pointer.
+
+How can apply_op stay unchanged while the cafe changes which pricing rule runs?
+
+apply_op takes a function pointer as one of its parameters. The caller can pass different functions, such as add_cents or percent_off_amount. Because apply_op calls whichever function is passed to it, apply_op itself does not need to change when the pricing behavior changes.
+
+Name one real-world callback example that you can think about or learn about.
+
+A button click handler in a graphical user interface is an example of a callback. The program can store a function that should run when the user clicks a button. Another example is a sorting function that accepts a comparison function to decide how two values should be ordered.
+
+Part C — Git
+
+The Git commands I used included:
+
+git status
+
+git log --oneline
+
+The purpose of git status is to show which files have changed, which files are staged, and whether the working directory is clean.
+
+The purpose of git log --oneline is to show the commit history in a short format.
+
+My Git status showed:
+
+nothing to commit, working tree clean
+
+My Git log showed three commits:
+
+3ab0804 (HEAD -> main) Complete homework 14
+be88aaa Implement recursive cafe helpers
+6bc9328 Add recursion and pricing prototypes
+
+Why is a hand trace useful before you chase a recursive bug in the debugger?
+
+A hand trace helps me understand exactly how the recursive calls should work before using a debugger. It makes the base case, recursive case, arguments, and return values easier to see. If the program gives the wrong result, I can compare the actual behavior to the hand trace and identify where the recursion went wrong.
+
+Which commit message would you choose after fixing a missing base case, and why is that better than fix?
+
+I would use:
+
+Fix missing factorial base case
+
+This is better than simply using "fix" because it clearly explains what was changed. A specific commit message makes the Git history easier to understand later.
+
+Learning Notes
+
+This homework helped me understand that recursion needs two important parts: a base case that stops the recursion and a recursive case that moves toward the base case.
+
+The sum_order function demonstrates that recursion can work through an array as well as through a number. Each call processes the first remaining price and then recursively processes the rest of the array.
+
+The factorial and power functions showed me how a mathematical definition can be translated directly into recursive C code.
+
+I also learned that a function pointer can allow a program to choose which function to execute at runtime. In this assignment, apply_op can use different pricing operations without needing to be rewritten.
+
+Program Output
+
+order 250+350+450 = 1050
+factorial(0) = 1
+factorial(5) = 120
+power(2,8) = 256
+power(5,0) = 1
+add_cents via apply_op: 1050
+10% of 1050 via apply_op: 105

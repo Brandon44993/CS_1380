@@ -1,0 +1,56 @@
+C PROGRAM STRUCTURE AND LEARNING ANALYSIS
+
+Part 1: C Program Structure
+
+1. What are the essential parts of a C program?
+
+2. How do you make your code readable?
+
+3. What are common mistakes beginners make?
+
+
+Part 1.2: Program Elements
+
+1. What are the most important elements of a C program?
+
+2. How do you make code more readable?
+
+3. What are common mistakes beginners make?
+
+
+Part 2: clang-format
+
+1. What formatting issues did clang-format fix?
+
+2. How does consistent formatting help with code maintenance?
+
+3. What are the benefits of automated code formatting?
+
+
+Part 3: Comments
+
+1. What makes a comment useful?
+
+2. When should you prefer self-documenting code over comments?
+
+3. How do you balance commenting with code clarity?
+
+
+Part 4: Data Types
+
+1. What are the differences between int and float?
+
+2. When would you use char vs int?
+
+3. How do you choose the right data type for a variable?
+
+
+Part 5: Shell Tools
+
+1. How do you find files on your system?
+
+2. What's the difference between find and locate?
+
+3. How do you search for text in files?
+
+4. What are the basics of shell scripting?

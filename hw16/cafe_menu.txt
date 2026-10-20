@@ -1,0 +1,76 @@
+ CS 1380 Homework 16: Pointer Arithmetic
+
+Name: Brandon ALlen
+Course: CS 1380
+Homework: 16
+Topic: Pointer Arithmetic (§4.2)
+
+Part A — Basic Questions
+1. If p is an int *, why does p + 1 usually add 4 bytes? What if p is a char *?
+
+Pointer arithmetic advances by the size of the type that the pointer points to. If p is an int * and an int occupies 4 bytes on the system, p + 1 advances by 4 bytes to the next integer. If p is a char *, p + 1 advances by one byte because a char occupies one byte in C.
+
+2. What does end - start mean when both pointers point into the same integer array?
+
+It gives the number of integer elements between the two pointers, not the number of bytes. For example, if start points to element 0 and end points to element 4, end - start is 4.
+
+3. Why is *(prices + 5) undefined behavior for an array of length 5, even if it compiles?
+
+An array of length 5 has valid indexes from 0 through 4. The expression prices + 5 points one element past the end of the array. That pointer may be used as a boundary, but it must not be dereferenced. Dereferencing it accesses memory outside the array and causes undefined behavior.
+
+Part B — Hand Trace
+
+Given:
+
+int arr[] = {10, 20, 30, 40, 50};
+int *p = arr + 2;
+
+
+The pointer p points to arr[2], which contains 30.
+
+*p = 30
+*(p + 1) = 40
+*(p - 1) = 20
+(arr + 4) - p = 2
+
+The final result is 2 because the pointer to arr[4] is two elements after the pointer to arr[2].
+
+4. How does drink_length know when to stop without being passed a length?
+
+A C string ends with the null character '\0'. The function advances its pointer while the character is not '\0'. When it reaches the terminator, it stops and subtracts the starting pointer from the current pointer to calculate the string length. The terminator itself is not counted.
+
+5. When is a subscript such as prices[i] clearer than pointer increment, and when is a p++ walk a good fit?
+
+Array subscripting is clearer when I want to access a specific element by its index, such as prices[2]. A p++ pointer walk is useful when traversing an entire array in order. It demonstrates how pointers move between elements and works well with pointer-comparison loop conditions.
+
+Part C — Git and Learning Reflection
+6. Why is a one-line hand trace useful before debugging a bad pointer?
+
+A hand trace lets me check exactly where a pointer points and what each expression should produce. It can reveal an incorrect offset, an off-by-one error, or an attempt to access memory beyond the array before I spend time using a debugger.
+
+7. Why push to the remote in addition to uploading hw16.zip on Canvas?
+
+Pushing to the remote repository keeps a backup of my work and preserves the commit history. Canvas provides the required submission for grading, while Git records the development process and makes the work easier to recover or review.
+
+Program Observations
+The initial menu contains five prices: 250, 350, 450, 199, and 500 cents.
+price_at returns the price at a valid index and returns 0 for invalid input.
+max_price finds the largest price, which is 500 cents for the initial menu.
+The difference between the addresses of adjacent integers should equal sizeof(int) bytes.
+items_between(&prices[0], &prices[4]) returns 4 because there are four element intervals between the pointers.
+reverse_menu reverses the array in place.
+drink_length("latte") returns 5, and drink_length(NULL) returns 0.
+The pointer-comparison loops stop at the one-past-the-end boundary without dereferencing it.
+Git Evidence
+
+Paste the actual output from your terminal below after running these commands from the course repository:
+
+git status
+
+On branch master
+nothing to commit, working tree clean
+
+git log --oneline
+
+78c0630 (HEAD -> master) Add HW16 pointer arithmetic assignment
+[master 8110638] Add Git evidence to assignment

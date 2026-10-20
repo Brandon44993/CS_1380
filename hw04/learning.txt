@@ -1,0 +1,158 @@
+CS 1380 - Homework 04
+Data Types, Variables, Type Conversions
+Learning Notes
+
+========================================
+FIND AND LOCATE
+===============
+
+I used the find command to search my projects directory for C source files.
+
+Command:
+find ~/projects -name "*.c" -type f
+
+Output:
+/home/ubuntu/projects/hello.c
+/home/ubuntu/projects/hw01/c23_overview.c
+/home/ubuntu/projects/hw02/c23_intro.c
+/home/ubuntu/projects/hw02/compilation_test.c
+/home/ubuntu/projects/hw02/editor_practice.c
+/home/ubuntu/projects/hw03/commenting_demo.c
+/home/ubuntu/projects/hw03/data_types_exploration.c
+/home/ubuntu/projects/hw03/my_first_program.c
+/home/ubuntu/projects/hw03/poorly_formatted.c
+/home/ubuntu/projects/hw03/program_elements.c
+/home/ubuntu/projects/hw04/basic.c
+/home/ubuntu/projects/hw04/basic_original.c
+
+I also used find to list all files in my Homework 04 directory.
+
+Command:
+find ~/projects/hw04 -type f
+
+Output:
+/home/ubuntu/projects/hw04/basic
+/home/ubuntu/projects/hw04/basic.c
+/home/ubuntu/projects/hw04/basic.sh
+/home/ubuntu/projects/hw04/basic_original.c
+/home/ubuntu/projects/hw04/learning.txt
+
+I tried to use locate to find basic.c.
+
+Command:
+locate basic.c
+
+Output:
+Command 'locate' not found, but can be installed with:
+sudo apt install plocate
+
+The locate command was not installed on my Ubuntu system.
+
+========================================
+GREP
+====
+
+I used grep to search my Homework 02 and Homework 03 files for C23.
+
+Command:
+grep -Rni "C23" ~/projects/hw02 ~/projects/hw03
+
+The command found C23 in several files, including c23_intro.c, c_importance_analysis.txt, editor_analysis.txt, and environment_analysis.txt. It displayed the filenames, line numbers, and matching text.
+
+I also used grep to search my Homework 03 C programs for the text "int".
+
+Command:
+grep -n "int" ~/projects/hw03/*.c
+
+The command found integer declarations and other occurrences of "int" in several Homework 03 programs, including data_types_exploration.c, my_first_program.c, poorly_formatted.c, program_elements.c, and commenting_demo.c.
+
+========================================
+BASIC QUESTIONS
+===============
+
+1. How do you find shell commands?
+
+I can find shell commands by using commands such as man, help, apropos, and which. The man command provides detailed documentation for many commands. The help command provides information about shell built-in commands. The apropos command searches manual-page descriptions for keywords, and which can show the location of an executable command.
+
+2. What's the difference between find and locate?
+
+The find command searches directories and files directly on the filesystem when I run it. It can search using names, file types, sizes, dates, and other conditions. The locate command searches a database of file paths, so it is usually faster, but its database may not contain the most recently created files. On my system, locate was not installed and Ubuntu suggested installing plocate.
+
+3. What are basic shell commands for file management?
+
+Some basic file-management commands are ls for listing files, cd for changing directories, pwd for showing the current directory, cp for copying files, mv for moving or renaming files, rm for removing files, mkdir for creating directories, and chmod for changing file permissions.
+
+4. What interested you most about shell commands?
+
+What interested me most was how shell commands can quickly search and manage many files without opening them individually. I found find and grep especially useful because I could search my homework directories and locate specific files or text from the terminal.
+
+========================================
+ACTUAL GREP OUTPUT
+==================
+
+Command:
+grep -Rni "C23" ~/projects/hw02 ~/projects/hw03
+
+Actual output:
+/home/ubuntu/projects/hw02/c23_intro.c:5:    // This program introduces C23 and explains why C is still important.
+/home/ubuntu/projects/hw02/c23_intro.c:7:    printf("C23 is a modern standard of the C programming language.\n");
+/home/ubuntu/projects/hw02/c23_intro.c:9:    printf("C23 adds modern features while keeping C efficient and portable.\n");
+/home/ubuntu/projects/hw02/c_importance_analysis.txt:11:How does C23 address modern programming challenges?
+/home/ubuntu/projects/hw02/c_importance_analysis.txt:12:   C23 is the newest major C language standard and adds several modern features while keeping C's focus on efficiency and compatibility.
+/home/ubuntu/projects/hw02/editor_analysis.txt:5:    Nano allows me to create, edit, and save C source files directly from the terminal. I used Nano to create and edit my `c23_intro.c` program. After editing the program, I saved the file and used GCC from the terminal to compile and run it.
+/home/ubuntu/projects/hw02/editor_analysis.txt:15:    The executable compiled with `-std=c23` was 15,968 bytes. The executable compiled with `-Wall` and `-Wextra` was also 15,968 bytes. The executable compiled with `-g` was larger at 17,384 bytes. This shows that adding debugging information increased the executable's size.
+/home/ubuntu/projects/hw02/editor_analysis.txt:21:    I would use `-std=c23` when I want to make sure my program is compiled using the C23 standard. I would use `-Wall` and `-Wextra` when developing a program because they help identify possible problems in my code. I would use `-g` when I need to debug a program with a debugger such as GDB. For a final version where debugging information is not needed, I may compile without `-g`.
+/home/ubuntu/projects/hw02/environment_analysis.txt:8:    Using `-std=c23` tells the compiler to follow the C23 standard when compiling the program. This helps ensure that the code is compiled
+/home/ubuntu/projects/hw02/environment_analysis.txt:11:How do you know if your compiler supports C23?
+/home/ubuntu/projects/hw02/environment_analysis.txt:12:    I know my compiler supports C23 because I am using GCC version 15.2.0, and I successfully compiled my C program with the `-std=c23`
+/home/ubuntu/projects/hw02/environment_analysis.txt:23:    gcc c23_intro.c -Wall -Wextra -std=c23 -g -o c23_intro
+/home/ubuntu/projects/hw02/environment_analysis.txt:24:    The -std=c23 option tells GCC to use the C23 standard. The -Wall and -Wextra options enable additional compiler warnings,
+/home/ubuntu/projects/hw02/environment_analysis.txt:27:    ./c23_intro
+/home/ubuntu/projects/hw02/environment_analysis.txt:33:Compiling With and Without C23
+/home/ubuntu/projects/hw02/environment_analysis.txt:34:    I tested my program by compiling it both with and without the `-std=c23` option. When I compiled without `-std=c23`, the program still compiled
+/home/ubuntu/projects/hw02/environment_analysis.txt:35:    and ran successfully because it uses basic C features that are supported by GCC's default language mode. However, using `-std=c23` is important
+/home/ubuntu/projects/hw02/environment_analysis.txt:36:    because it explicitly tells GCC to use the C23 standard and allows me to use C23-specific features when needed.
+
+Command:
+grep -n "int" ~/projects/hw03/*.c
+
+Actual output:
+/home/ubuntu/projects/hw03/commenting_demo.c:9:int main(void)
+/home/ubuntu/projects/hw03/commenting_demo.c:17:    printf("First score: %.1f\n", first_score);
+/home/ubuntu/projects/hw03/commenting_demo.c:18:    printf("Second score: %.1f\n", second_score);
+/home/ubuntu/projects/hw03/commenting_demo.c:19:    printf("Average score: %.1f\n", average);
+/home/ubuntu/projects/hw03/data_types_exploration.c:5:int main(void)
+/home/ubuntu/projects/hw03/data_types_exploration.c:7:    int whole_number = 10;
+/home/ubuntu/projects/hw03/data_types_exploration.c:12:    printf("Integer: %d\n", whole_number);
+/home/ubuntu/projects/hw03/data_types_exploration.c:13:    printf("Character: %c\n", letter);
+/home/ubuntu/projects/hw03/data_types_exploration.c:14:    printf("Float: %.2f\n", decimal_number);
+/home/ubuntu/projects/hw03/data_types_exploration.c:15:    printf("Double: %.10f\n", precise_number);
+/home/ubuntu/projects/hw03/data_types_exploration.c:17:    printf("\nType sizes:\n");
+/home/ubuntu/projects/hw03/data_types_exploration.c:18:    printf("int: %zu bytes\n", sizeof(int));
+/home/ubuntu/projects/hw03/data_types_exploration.c:19:    printf("char: %zu byte\n", sizeof(char));
+/home/ubuntu/projects/hw03/data_types_exploration.c:20:    printf("float: %zu bytes\n", sizeof(float));
+/home/ubuntu/projects/hw03/data_types_exploration.c:21:    printf("double: %zu bytes\n", sizeof(double));
+/home/ubuntu/projects/hw03/data_types_exploration.c:23:    printf("\nInteger division: %d\n", 7 / 2);
+/home/ubuntu/projects/hw03/data_types_exploration.c:24:    printf("Floating-point division: %.2f\n", 7.0 / 2.0);
+/home/ubuntu/projects/hw03/data_types_exploration.c:26:    printf("\nInteger limits:\n");
+/home/ubuntu/projects/hw03/data_types_exploration.c:27:    printf("INT_MIN: %d\n", INT_MIN);
+/home/ubuntu/projects/hw03/data_types_exploration.c:28:    printf("INT_MAX: %d\n", INT_MAX);
+/home/ubuntu/projects/hw03/data_types_exploration.c:30:    printf("\nFloating-point limits:\n");
+/home/ubuntu/projects/hw03/data_types_exploration.c:31:    printf("FLT_MAX: %e\n", FLT_MAX);
+/home/ubuntu/projects/hw03/data_types_exploration.c:32:    printf("DBL_MAX: %e\n", DBL_MAX);
+/home/ubuntu/projects/hw03/my_first_program.c:3:int main(void)
+/home/ubuntu/projects/hw03/my_first_program.c:10:    printf("Hello! My name is %s.\n", name);
+/home/ubuntu/projects/hw03/my_first_program.c:11:    printf("My programming goal is %s.\n", programming_goal);
+/home/ubuntu/projects/hw03/poorly_formatted.c:3:int main(void) {
+/home/ubuntu/projects/hw03/poorly_formatted.c:4:  int firstNumber = 10;
+/home/ubuntu/projects/hw03/poorly_formatted.c:5:  int secondNumber = 20;
+/home/ubuntu/projects/hw03/poorly_formatted.c:6:  int total = firstNumber + secondNumber;
+/home/ubuntu/projects/hw03/poorly_formatted.c:9:    printf("The total is greater than 20.\n");
+/home/ubuntu/projects/hw03/poorly_formatted.c:11:    printf("The total is 20 or less.\n");
+/home/ubuntu/projects/hw03/program_elements.c:3:int main(void)
+/home/ubuntu/projects/hw03/program_elements.c:6:    int first_number = 10;
+/home/ubuntu/projects/hw03/program_elements.c:7:    int second_number = 5;
+/home/ubuntu/projects/hw03/program_elements.c:10:    int sum = first_number + second_number;
+/home/ubuntu/projects/hw03/program_elements.c:12:    printf("First number: %d\n", first_number);
+/home/ubuntu/projects/hw03/program_elements.c:13:    printf("Second number: %d\n", second_number);
+/home/ubuntu/projects/hw03/program_elements.c:14:    printf("Sum: %d\n", sum);

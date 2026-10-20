@@ -1,0 +1,85 @@
+CS 1380 Homework 08
+loops_wrangling_learning.txt
+
+PART A — BASIC QUESTIONS
+
+1. Where did you use while versus do-while, and why?
+
+I used while loops to validate the inputs because the user may need to enter an unknown number of attempts before entering valid input. A while loop works well because it can continue until the input is valid.
+
+2. Why does re-prompting fit those loops better than a for loop?
+
+The number of invalid attempts is not known ahead of time. A while loop is better because it continues based on a condition rather than a predetermined number of repetitions.
+
+3. What happens if you do not clear the input buffer after a failed scanf("%d", ...)?
+
+If scanf fails because the user enters something that is not an integer, the invalid characters remain in the input buffer. The next scanf can encounter the same invalid characters and fail again, which can cause an infinite loop of error messages. Clearing the remaining characters up to the newline allows the user to enter new input.
+
+4. What happens if you use the wrong scanf format specifier?
+
+Using the wrong format specifier can cause scanf to interpret the input incorrectly or write data to the wrong type of variable. This can produce incorrect results and can cause undefined behavior.
+
+PART B — BASIC QUESTIONS
+
+1. Why is a for loop natural when you know exactly how many customers to process?
+
+A for loop is natural because the number of customers is known before the loop starts. The loop can run exactly once for each customer from 1 through n.
+
+2. Where did you use continue? What would happen if you used break instead?
+
+I used continue when a customer is under 13 and therefore ineligible. The program prints that the customer is not eligible, increases the ineligible count, and uses continue to move to the next customer.
+
+If break were used instead, the entire for loop would end immediately. Any remaining customers would not be processed, so the final totals would only include the customers processed before the break.
+
+PART C — SHELL DATA WRANGLING
+
+The ticket_sales.txt file contains:
+
+Name,age,day,category,price
+
+An empty price means the customer was not eligible and did not make a sale.
+
+1. Find only student tickets (category S).
+
+Command:
+
+grep ',S,' ticket_sales.txt
+
+Output:
+
+Alice,20,6,S,13
+Eve,19,7,S,13
+Frank,65,3,S,5
+Ivy,17,4,S,10
+Leo,14,1,S,10
+Olivia,21,3,S,10
+Sam,22,5,S,10
+
+2. Replace S with the word student.
+
+Command:
+
+sed 's/,S,/,student,/g' ticket_sales.txt
+
+Output:
+
+Name,age,day,category,price
+Alice,20,6,student,13
+Bob,70,3,G,13
+Carol,10,2,G,
+Dan,22,1,F,12
+Eve,19,7,student,13
+Frank,65,3,student,5
+Grace,45,5,G,18
+Henry,30,6,F,15
+Ivy,17,4,student,10
+Jack,80,3,G,13
+Kate,25,7,G,21
+Leo,14,1,student,10
+Maya,55,2,F,12
+Noah,12,6,G,
+Olivia,21,3,student,10
+Paul,33,7,F,15
+Quinn,68,6,G,21
+Rita,19,1,G,18
+Sam,22,

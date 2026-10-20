@@ -1,0 +1,11 @@
+Control Flow Learning
+
+1. What does scanf("%d", &age) return on success?
+
+2. Why should you check the age before using it?
+
+3. Where did you use && or || in your program?
+
+4. Why is switch good for the category, but poor for checking age < 13?
+
+5. What happens if the user enters lowercase g instead of G? Did you handle it?

@@ -1,0 +1,44 @@
+--- Customer 1: Alice ---
+Status: adult
+Price: $16
+--- Customer 2: Bob ---
+Status: adult
+Price: $8
+--- Customer 3: Carol ---
+Not eligible: under 13
+--- Customer 4: Dan ---
+Status: adult
+Price: $15
+--- Customer 5: Eve ---
+Status: adult
+Price: $13
+--- Customer 6: Frank ---
+Status: adult
+Price: $5
+--- Customer 7: Grace ---
+Status: adult
+Price: $13
+--- Customer 8: Henry ---
+Status: adult
+Price: $18
+--- Customer 9: Ivy ---
+Status: minor
+Price: $10
+--- Customer 10: Jack ---
+Status: adult
+Price: $8
+--- Customer 11: Kate ---
+Status: adult
+Price: $16
+--- Customer 12: Leo ---
+Status: minor
+Price: $10
+--- Customer 13: Maya ---
+Status: adult
+Price: $15
+--- Customer 14: Noah ---
+Not eligible: under 13
+Customers: 14
+Eligible tickets: 12
+Ineligible: 2
+Total revenue: $147

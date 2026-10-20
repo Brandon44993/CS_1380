@@ -1,0 +1,36 @@
+What are the advantages of using a Linux system for C programming?
+    Linux provides a powerful command-line environment for C programming. It has tools such as GCC for compiling programs and provides easy access 
+    to development utilities. Linux is also widely used for system programming, which makes it a useful environment for learning how C programs 
+    interact with the operating system and computer hardware.
+
+Why is it important to specify the C standard when compiling?
+    It is important to specify the C standard because different versions of C can support different language features and syntax. 
+    Using `-std=c23` tells the compiler to follow the C23 standard when compiling the program. This helps ensure that the code is compiled 
+    according to the language version being used and makes the compiler's behavior more predictable.
+
+How do you know if your compiler supports C23?
+    I know my compiler supports C23 because I am using GCC version 15.2.0, and I successfully compiled my C program with the `-std=c23` 
+    option without receiving errors or warnings. I also ran the resulting program successfully.
+
+
+What does GCC do and why is it important?
+    GCC stands for GNU Compiler Collection. It is a compiler that translates C source code into an executable program that the computer can run. 
+    GCC is important because it allows programmers to compile, test, and run their C programs from the command line.
+
+What basic compilation commands did you learn?
+
+    I learned that I can compile a C program using GCC with a command such as:
+    gcc c23_intro.c -Wall -Wextra -std=c23 -g -o c23_intro
+    The -std=c23 option tells GCC to use the C23 standard. The -Wall and -Wextra options enable additional compiler warnings, 
+    and -g includes debugging information. The -o option specifies the name of the executable.
+    I also learned that I can run the compiled program from the terminal using:
+    ./c23_intro
+
+What is one tool you want to learn more about?
+    One tool I want to learn more about is GDB, the GNU Debugger. I would like to learn how to use it to find and fix errors in C programs 
+    and understand what is happening while a program is running.
+
+Compiling With and Without C23
+    I tested my program by compiling it both with and without the `-std=c23` option. When I compiled without `-std=c23`, the program still compiled 
+    and ran successfully because it uses basic C features that are supported by GCC's default language mode. However, using `-std=c23` is important 
+    because it explicitly tells the compiler to use the C23 standard and allows me to use C23-specific features when needed.

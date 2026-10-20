@@ -1,0 +1,58 @@
+CS 1380 Homework 09
+Console I/O Learning Notes
+
+Part C: Standard input from the shell
+
+I created sample.txt containing:
+
+Hello
+This is a test.
+Console input uses streams.
+
+Command:
+./echo_line < sample.txt
+
+Output:
+[PASTE THE EXACT OUTPUT FROM YOUR TERMINAL HERE]
+
+
+Basic Questions
+
+1. Which printf width (or flag) did you use for the price table and the receipt?
+
+For the price table, I used %-10s to left-align the category labels in a
+10-character field and %4d for the base prices. For the receipt, I used
+%-12s for the labels and %8d or %8s for the values so the columns line up.
+
+2. After scanf("%d", ...) for day, what is left in the input buffer?
+
+After scanf reads the integer, the newline that I entered after the number
+is still in the input buffer. If there are additional spaces before the
+newline, those whitespace characters can also remain.
+
+3. What did you observe if you called getchar for category without skipping
+that leftover? Test it and record it.
+
+When I called getchar without skipping the leftover whitespace, getchar
+read the newline left by scanf instead of the category letter. As a result,
+the category was not read correctly and the program treated it as invalid.
+
+4. Why does getchar return int, not char?
+
+getchar returns int so that it can represent every possible character value
+and also the special EOF value. A char cannot reliably represent EOF
+separately from all possible character values.
+
+5. When is putchar a better fit than printf("%c", ...)? When would you still
+use printf?
+
+putchar is a good fit when I want to output one character at a time, such
+as when echoing a character stream. printf is better when I need formatted
+output, multiple values, field widths, numbers, strings, or other formatting.
+
+6. For Part C: what does < on the command line do in your own words?
+
+The < operator redirects standard input. Instead of the program receiving
+input from the keyboard, stdin receives the contents of the file. The
+program still uses getchar normally; the shell supplies the file as its
+standard input.

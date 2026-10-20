@@ -1,0 +1,10 @@
+What is C23 and how does it differ from previous C standards?
+    C23 is the newest version of the programing language C. It ubdates the language with new features, removes outdated features, and improved usability
+What are the key features introduced in C23?
+    nullptr, similar to nullptr in C++. Binary integer constants programmers can write values such as 0b1010, Digit separators numbers can be written with ' to make them easier to read, typeof and typeof_unqual,standardized attributes such as [[deprecated]] can provide additional information about code.
+What is the role of the C standard library?
+    it provides comonly nedded functions so we dont have to implement them every time
+How does C23 handle backward compatibility?
+    The goal was to modernize C while maintaining the language's existing programming model so while everything wont work becuase of the removle of some of the older featers it has a large amount of compatibility
+Basic Understanding: Why do you think C is still relevant today despite being 50+ years old?
+    C is relevent because it firect acsess to memory, little overhead, and provides high performance. 
