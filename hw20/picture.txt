@@ -1,0 +1,116 @@
+# CS 1380 Homework 20 — Console Picture
+
+## Part A — Basic Questions
+
+**1. In the worst case, why must `find_code` look at every cell?**
+
+In the worst case, the target is not in the picture, or it is in the last cell. The function must check every cell before it can determine that the target is missing or return its last possible position.
+
+**2. Why is `COLS` part of the parameter type `pic[][COLS]`, while the number of rows is a separate argument?**
+
+C needs to know the number of columns to calculate the location of each row in the two-dimensional array. The number of rows can vary, so it is passed separately through `nrows`.
+
+**3. What does the array store, and where does the printed glyph come from?**
+
+The array stores integer codes, such as `0` and `1`. The `print_picture` function maps those codes to characters, printing `.` for `0`, `#` for `1`, and `?` for other values.
+
+## Part B — Basic Questions
+
+**4. If `set_cell` is given `row == nrows`, why must it refuse the write?**
+
+Array row indexes range from `0` to `nrows - 1`. A row index equal to `nrows` is outside the array and could cause an out-of-bounds memory access.
+
+**5. What is the flat index of `pic[2][3]` when `COLS` is 5?**
+
+The flat index is `2 * 5 + 3 = 13`.
+
+## Part C — Timing and Profiling
+
+**6. What does `time` tell you that stepping in GDB does not? Why is a 4×5 picture a weak example for a real profiler?**
+
+The `time` command measures how long a program takes to run and reports real, user, and system time. Stepping through a program in GDB is useful for inspecting execution and variable values, but it changes the normal execution process. A 4×5 picture is too small to provide a meaningful performance test because the program does very little work and finishes very quickly.
+
+**7. Why push to the remote in addition to uploading `hw20.zip` on Canvas?**
+
+Pushing to the remote keeps a backup of the source code and its commit history in the course Git repository. Uploading the ZIP to Canvas submits the required assignment files for grading. Both steps are required.
+
+## Part C — Required Evidence
+
+Original picture:
+.....
+.#.#.
+.....
+.###.
+.....
+
+find 1 -> 6
+find 9 -> -1
+
+After set_cell(2, 2, 1):
+.....
+.#.#.
+..#..
+.###.
+.....
+
+set_cell(9, 0, 1) ignored
+.....
+.#.#.
+..#..
+.###.
+.....
+
+Testing null pointer:
+find_code(nullptr, 4, 1) -> -1
+
+Timing results:
+real    0m0.046s
+user    0m0.031s
+sys     0m0.007s
+
+
+
+
+### GDB debugging results
+
+I set a breakpoint at `main.c:27`, immediately before the call to `set_cell(pic, nrows, 2, 2, 1)`.
+
+**Original picture array:**
+
+```text
+Row 0: {0, 0, 0, 0, 0}
+Row 1: {0, 1, 0, 1, 0}
+Row 2: {0, 0, 0, 0, 0}
+Row 3: {0, 1, 1, 1, 0}
+Row 4: {0, 0, 0, 0, 0}
+```
+
+After stepping over the `set_cell` call, row 2 became:
+
+```text
+{0, 0, 1, 0, 0}
+```
+
+This confirms that `set_cell` changed the cell at row 2, column 2 from `0` to `1`.
+
+### Program timing
+
+Command: `time ./picture`
+
+```text
+real    0m0.046s
+user    0m0.031s
+sys     0m0.007s
+```
+
+The program ran successfully. The timing is very short because this example processes only a small picture.
+
+
+
+ubuntu@primary:~/projects/hw20$ git status
+git log --oneline
+On branch master
+nothing to commit, working tree clean
+be7a68c (HEAD -> master) Add HW20 console picture program
+ubuntu@primary:~/projects/hw20$
+

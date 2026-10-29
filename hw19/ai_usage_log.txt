@@ -1,0 +1,56 @@
+# AI Usage Log — HW19: Intramural Scores (Arrays)
+
+## AI Tool Used
+ChatGPT
+
+## 1. Troubleshooting Assistance
+
+I used ChatGPT to help troubleshoot problems while working on my HW19 C programming assignment. Most of the assistance involved compiling and running my program in Ubuntu through Multipass, checking the output, debugging with GDB, and preparing the required submission files.
+
+## 2. Problems I Worked Through
+
+**Compiling the C program**
+
+I used ChatGPT to help me compile my program with GCC using the required warning flags. I ran the following command:
+
+`gcc -Wall -Wextra -Wpedantic -std=c23 -g -o scores main.c scores.c`
+
+The program compiled without warnings. This helped me verify that my source files were working together and that there were no compiler warnings.
+
+**Running and checking the program**
+
+I ran the compiled program and checked its output against the expected calculations. The output showed a score sum of 54, a maximum score of 15, three scores greater than or equal to 10, and a board sum of 129. I also checked the tests involving NULL inputs, which returned 0.
+
+ChatGPT helped me understand what these results meant and how to verify that the program was behaving as expected.
+
+**Troubleshooting GDB**
+
+I used ChatGPT to help me work through debugging with GDB. During my first attempt, I printed an incorrect-looking value because I tried to inspect an array element before the array had been initialized. ChatGPT explained why this happened and guided me through setting a breakpoint at `main`, stepping through the code with `next`, and printing the array element after initialization.
+
+My successful command was:
+
+`print scores[2]`
+
+GDB returned:
+
+`$1 = 15`
+
+This confirmed that the third element of the array contained the expected value.
+
+**Preparing the submission files**
+
+I also used ChatGPT to determine which files needed to be included in the final ZIP archive. I learned that the submission should contain the required source files, `.gitignore`, `scores.txt`, and `ai_usage_log.txt`, without compiled binaries or object files.
+
+## 3. What I Learned
+
+The troubleshooting process helped me understand that compiling a program successfully is only one step in checking its correctness. Running the program and examining its output are also important. I learned that GDB can help identify problems by stopping at breakpoints and allowing me to inspect variables as the program executes.
+
+I also learned that inspecting a variable before it has been initialized can produce an unexpected value, so it is important to step through the program in the correct order.
+
+## 4. My Role and Use of AI
+
+I used ChatGPT as a troubleshooting resource to explain errors, suggest commands, and help me interpret program output. I ran the commands in my own Ubuntu environment, reviewed the results, and updated my assignment files myself. I am responsible for understanding the program and verifying that my submission meets the assignment requirements.
+
+## 5. Final Reflection
+
+Overall, ChatGPT helped me work through the debugging process instead of simply guessing what was wrong. The most useful part was learning why GDB initially showed an unexpected value and how stepping through the program allowed me to inspect the array correctly. This experience helped me become more comfortable compiling, testing, and debugging C programs in Ubuntu.

@@ -1,0 +1,46 @@
+
+CS 1380 - Homework 21
+Name: Your Name
+
+PART A - BASIC QUESTIONS
+
+1. A C string must end with '\0' so functions such as printf with %s know where the string stops. Without it, a program may read beyond the array, print garbage, or access invalid memory.
+
+2. The pointer p points to a string literal, which should not be modified. The array name contains its own modifiable copy of the characters, so changing name[0] is allowed.
+
+3. If dest has room for 5 characters including '\0', team_copy stores "Wolv" followed by '\0'. Only four letters fit because one slot must hold the terminator.
+
+PART B - BASIC QUESTIONS
+
+4. A truncated team_copy remains a valid C string because the function writes '\0' immediately after the last copied character. This terminator fits within the destination buffer.
+
+5. team_same compares the characters stored in the arrays, not their memory addresses. If both arrays contain the same letters and terminator, the function returns 1 even though they are separate arrays.
+
+PART C - DEPENDENCIES
+
+6. A dependency is something a program needs to build or run; for example, a C program may need a compiler and stdio.h, while a Python project may need an external package. [Adjust the Python example to match the assigned reading.]
+
+7. A project should use its own Python environment so its packages and versions do not interfere with the operating system or other projects.
+
+8. PATH AND VENV CHECK
+
+Paste the actual output or a short description of the changes from your before.txt and after.txt comparison here.
+
+which python:
+Paste the actual output of this command here.
+
+The virtual environment's bin directory is placed at the front of PATH when it is activated, so the shell finds the environment's Python interpreter first.
+
+PART C - ADDITIONAL QUESTIONS
+
+9. Two homework folders may need different versions of the same library because each project may depend on different features or compatibility requirements.
+
+10. Pushing to the remote repository provides a backup and a record of the committed work, while the Canvas ZIP is the assignment submission.
+
+GIT EVIDENCE
+
+Paste the actual output of:
+git status
+
+Paste the actual output of:
+git log --oneline

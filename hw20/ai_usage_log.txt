@@ -1,0 +1,29 @@
+1. How I Used AI
+
+I used ChatGPT to help me review my HW20 assignment. I pasted my program code, assignment instructions, and work into the conversation and asked ChatGPT to evaluate my work, help me understand the requirements, identify mistakes, and explain what I needed to fix.
+
+2. Prompts and Responses
+
+Prompt 1: I shared my HW20 assignment instructions and code and asked ChatGPT to help me check my work.
+
+Response: ChatGPT helped me compile and run my program, review the output, and check whether the program behaved as expected.
+
+Prompt 2: I shared my terminal output and asked ChatGPT to help me understand what I had done wrong.
+
+Response: ChatGPT explained the output and helped me troubleshoot my commands. When I used GDB, I learned that my original array-printing expressions displayed more values than I intended. ChatGPT showed me how to inspect each row separately.
+
+Prompt 3: I shared my debugging results and asked ChatGPT to help me verify the changes to my picture array.
+
+Response: ChatGPT helped me compare the array before and after calling set_cell and confirm that the intended cell changed.
+
+3. Testing and Critical Evaluation
+
+I did not rely only on ChatGPT's explanations. I compiled and ran my own program and checked the actual output. I also used GDB to inspect the array before and after the set_cell function call.
+
+My program compiled successfully with the warning flags enabled, and I checked the search results, picture output, cell update, invalid row handling, and null-pointer test. The GDB results showed that row 2 changed from {0, 0, 0, 0, 0} to {0, 0, 1, 0, 0} after the function call.
+
+I used ChatGPT as a tool to help me find and understand mistakes, but I checked its guidance against my own program output and debugging results. I also used the actual terminal results when documenting my work.
+
+4. Reflection
+
+Using ChatGPT helped me understand the assignment requirements and troubleshoot mistakes instead of simply guessing at what was wrong. Sharing my work and asking for feedback helped me identify issues with my commands and understand how to verify my program using GDB. I learned that I should test suggestions myself and make sure my documentation matches the results I actually obtained.

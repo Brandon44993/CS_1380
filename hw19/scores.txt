@@ -1,0 +1,93 @@
+CS 1380 Homework 19: Intramural Scores
+Author: Brandon Allen
+
+PART A — BASIC QUESTIONS
+
+1. Valid array indices
+
+For an array of length n, valid indices range from 0 through n - 1.
+Reading scores[n] accesses memory outside the valid array bounds.
+C does not automatically check array bounds, so this causes undefined
+behavior. The program might print an unexpected value, crash, or
+appear to work incorrectly.
+
+2. sizeof and array parameters
+
+In main, sizeof(scores) gives the total size in bytes of the actual
+array, and sizeof(scores[0]) gives the size of one element. Dividing
+them calculates the number of elements.
+
+Inside a function that receives const int scores[], the parameter
+acts as a pointer to the first element. sizeof(scores) measures the
+pointer size, not the original array size. Therefore, the function
+must receive the length separately.
+
+3. board[1][2]
+
+For int board[3][4], board[1][2] is row 1, column 2, using
+zero-based indexing. It is the third element of the second row.
+C stores multidimensional arrays in row-major order, meaning the
+elements of each row are stored consecutively in memory.
+
+PART B — BASIC QUESTIONS
+
+1. Why must a function receiving an array also receive its length?
+
+An array parameter does not tell the function how many elements
+belong to the original array. Passing the length lets the function
+stop at the correct boundary, loop safely, and check whether an
+index is valid.
+
+2. Which index is the row and which is the column?
+
+The first index selects the row, and the second index selects the
+column. Swapping the indices can access a different element or
+access outside the array bounds when the dimensions differ.
+
+PART C — GDB AND GIT
+
+1. What does -g add, and what happens without it?
+
+The -g compiler option adds debugging information, including
+information that helps GDB associate machine instructions with
+source code, variables, and line numbers. Without -g, GDB can
+still run the program and inspect some machine-level information,
+but source-level debugging and variable inspection may be limited.
+
+2. Why push to the remote as well as upload the ZIP?
+
+Pushing saves the Git commit history to the remote course repository
+and provides a backup of the work. The Canvas ZIP is the assignment
+submission, while the remote repository records the development
+history and provides another copy of the source files.
+
+GDB TRANSCRIPT
+
+```text
+(gdb) break main
+Breakpoint 1 at 0x11b5: file main.c, line 10.
+(gdb) run
+Starting program: /home/ubuntu/projects/hw19/scores
+Breakpoint 1, main () at main.c:10
+10      {
+(gdb) next
+11          int scores[] = {12, 8, 15, 10, 9};
+(gdb) next
+12          int n = (int)(sizeof(scores) / sizeof(scores[0]));
+(gdb) print scores[2]
+$1 = 15
+(gdb) quit
+Quit anyway? (y or n) y
+```
+
+
+GIT STATUS
+
+```text
+On branch main
+nothing to commit, working tree clean
+```
+GIT LOG
+
+dc8c3fb (HEAD -> main) Add AI usage log
+346fb56 Add HW19 intramural scores program
